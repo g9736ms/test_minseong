@@ -31,7 +31,7 @@ echo "test" >> test.txt
   associate_public_ip_address = "true"    #이 부분 중요하다고 생각함 퍼플릭 IP를 생성해 주는 것 안되면 외부와 통신이 안된다리
 }
 
-#위와 같이 인스턴스 내용을 변경해서 기입해준다.
+#위와 같이 인스턴스 내용을 변경해서 기입해 준다.
 resource "aws_instance" "www-a" {
   ami = "ami-대충번호" 
   instance_type = "t2.micro"
