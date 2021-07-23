@@ -1,0 +1,53 @@
+# s3에서 해줄 것 
+
+{
+   "Version": "2012-10-17",
+   "Statement": [
+      {
+         "Sid": "statement1",
+         "Effect": "Allow",
+         "Principal": {
+            "AWS": "arn:aws:iam::AccountA-ID:user/Dave"
+         },
+         "Action": [
+            "s3:GetBucketLocation",
+            "s3:ListBucket"
+         ],
+         "Resource": [
+            "arn:aws:s3:::awsexamplebucket1"
+         ]
+      },
+      {
+         "Sid": "statement2",
+         "Effect": "Allow",
+         "Principal": {
+            "AWS": "arn:aws:iam::AccountA-ID:user/Dave"
+         },
+         "Action": [
+             "s3:GetObject"
+         ],
+         "Resource": [
+            "arn:aws:s3:::awsexamplebucket1/*"
+         ]
+      }
+   ]
+}
+
+
+#IAM에서 사용자에게 해줄것 
+{
+   "Version": "2012-10-17",
+   "Statement": [
+      {
+         "Sid": "PermissionForObjectOperations",
+         "Effect": "Allow",
+         "Action": [
+            "s3:PutObject"
+         ],
+         "Resource": [
+            "arn:aws:s3:::awsexamplebucket1/*"
+         ]
+      }
+   ]
+}
+
