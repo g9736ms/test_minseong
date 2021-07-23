@@ -1,0 +1,32 @@
+filebeat.inputs:
+- type: filestream
+  enabled: true
+#/etc/rsyslog.conf 에 아랫 줄 추가
+#*.warn                                                   /tmp/crit.log
+  paths:
+    - /tmp/crit.log
+ 
+#- type: filestream
+#  enabled: true
+#  paths:
+#    - /var/log/*.log
+
+filebeat.config.modules:
+  path: ${path.config}/modules.d/*.yml
+  reload.enabled: false
+
+setup.template.settings:
+  index.number_of_shards: 1
+
+output.logstash:
+  hosts: ["192.168.xxx.xxx:5044"]   #로그스테시로 보내준다.
+
+processors:
+  - add_host_metadata:
+      when.not.contains.tags: forwarded
+  - add_cloud_metadata: ~
+  - add_docker_metadata: ~
+  - add_kubernetes_metadata: ~
+
+
+
