@@ -13,6 +13,9 @@ provider "aws" {
 # /test 라는 디랙터리를 만들고 거기다가 tf 파일들을 다 넣어주고 
 #terraform init 을 해줘야합니다.
 #디랙터리 모듈들 있는곳들을 설정해준다.
+#쓰던 안스던 자유
+/*
 module "test" {
   source  = "./test"
 }
+*/
