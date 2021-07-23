@@ -1,0 +1,6 @@
+path.data: /var/lib/logstash
+pipeline.ordered: auto
+ http.host: "0.0.0.0"
+ xpack.monitoring.elasticsearch.hosts: [ "http://localhost:9200" ]
+
+path.logs: /var/log/logstash
