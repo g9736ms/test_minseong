@@ -1,9 +1,10 @@
 이것저것 써두는곳
 
-- bash
-bash : 스크립트 작성한 것들 나열 해둠
+- bash : bash shell 스크립트 작성한 것들 나열 해둠
 
 - opensource_confg : 오픈소스들에 대해서 config 백업 및 사용 한 것들 기록용
+
+- etc : 짬 날때 재밌게 해봤던 것들 모음
 
 - s3_update :
 AWS기준으로 작성되었고 파이선 버전은 3.6이상에서 돌려야함
