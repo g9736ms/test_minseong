@@ -1,0 +1,59 @@
+#!/bin/bash
+
+##check made nfs
+chmn=`cat /etc/exports |wc -l`
+
+
+if [ $chmn > 1 ];then
+
+	echo "===== MOUNT ====="
+	echo "Where is mount point?*(pwd)"
+	read -p "[ex - /root/asdf ,(dir name) ] : " mountname
+
+
+	md=`showmount -e |tail -n1|awk '{print $1}'`
+	nip=`showmount -e |tail -n1|awk '{print $2}'`
+	nip=${nip: 0: -14}
+	mount -t nfs $nip:$md $mountname
+
+else
+
+/bin/yum install nfs-utils
+
+systemctl start nfs-server
+systemctl enable nfs-server
+
+echo "=====MAKE DIR for MOUNT====="
+echo "If you want DIR that put the name or way"
+read -p "[ex: /opt/makefile, /makefile] : " md
+
+mkdir $md
+chmod 777 $md
+
+echo "====== SET export ======"
+read -p "Put ip" nip
+
+echo ""
+read -p "put option" nopt
+
+echo "$md $nip($nopt)" >> /etc/exports
+
+
+echo "====== Update OR firewall ======"
+exportfs -f
+
+firewall-cmd --permanent --add-service=nfs
+firewall-cmd --reload
+firewall-cmd --list-all
+
+echo "===== NFS status ====="
+showmount -e
+exportfs -v
+#################################
+
+echo "===== MOUNT ====="
+echo "Where is mount point?*(pwd)"
+read -p "[ex - /root/asdf ,(dir name) ] : " mountname
+mount -t nfs $nip:$md $mountname
+
+fi
