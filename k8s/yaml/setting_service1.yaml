@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: dep-nginx
+  name: test-svc
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: dep-nginx
+  type: NodePort
+status:
+  loadBalancer: {}
+k expose deployment dep-nginx --type=NodePort --name=test-svc --port=80 --dry-run -o yaml
