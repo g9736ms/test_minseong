@@ -10,7 +10,7 @@ if [ $# = $NOARGS ];then
         echo "used : `basename $0` filename"
         exit $E_BADARGS
 fi
-## 이 위 까지는 사용 방법을 출력해준다 exit 인자값이 65면 그냥 종료 되는걸지도?
+## 이 위 까지는 사용 방법을 출력해준다  $? 인자값이 65을 리턴함
 ##
 
 
