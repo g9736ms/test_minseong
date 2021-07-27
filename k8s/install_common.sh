@@ -1,4 +1,6 @@
 #!/bin/bash
+#이쪽은 모듈 br_netfilter 관련 설정 iptables 통신 하려면 설정해줘야함
+#EC2에서 만들어서 스왑메모리 off 관련은 안넣음 
 lsmod | grep br_netfilter
 sudo modprobe br_netfilter 
 cat <<EOF | sudo tee /etc/modules-load.d/k8s.conf
@@ -11,6 +13,7 @@ net.bridge.bridge-nf-call-iptables = 1
 EOF
 sudo sysctl --system
 
+#도커 다운로드
 sudo yum install -y yum-utils
 sudo yum-config-manager \
     --add-repo \
@@ -37,7 +40,7 @@ sudo systemctl enable docker
 sudo systemctl daemon-reload
 sudo systemctl restart docker
 
-
+#쿠버 다운로드
 cat <<EOF | sudo tee /etc/yum.repos.d/kubernetes.repo
 [kubernetes]
 name=Kubernetes
@@ -48,7 +51,6 @@ repo_gpgcheck=1
 gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
 exclude=kubelet kubeadm kubectl
 EOF
-
 
 sudo setenforce 0
 sudo sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config
