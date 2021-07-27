@@ -1,0 +1,31 @@
+# 전역 설정
+global:
+  scrape_interval:     15s # 매트릭 수집시간 설정  기본은 1분.
+  evaluation_interval: 15s #규칙 평가 시간을 설정 기본은 1분.
+
+  # 외부 시스템에 표시할 이 서버의 레이블
+  external_labels:
+      monitor: 'test-prometheus'
+# alert
+# alerting:
+#   alertmanagers:
+#   - scheme: http
+#     static_configs:
+#     - targets:
+#       - "alertmanager:9093"
+
+rule_files:
+  # - "first.rules"
+  # - "second.rules"
+
+# 매트릭을 수집할 엔드포인드를 가르킨다.
+scrape_configs:
+  #  `job=<job_name>`으로 설정준다. 이어서 계속 써주면 됨
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+  # node-exporter 은 UNIX 계열 커널을 가진 하드웨어와 OS릭 등 "시스템 메트릭"을 수집
+  - job_name: 'node-exporter'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['node-exporter:9100']
