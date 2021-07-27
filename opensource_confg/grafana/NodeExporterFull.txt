@@ -1,0 +1,12 @@
+#아래 사이트에 들어가서 Get this dashboard: 쪽에 들어가 카피를 한다.
+https://grafana.com/grafana/dashboards/1860
+#그라파나에 들어가서 + >  Import 매뉴에 들어가서 방금 복사한 번호를 입력후 Load를 누르고
+#밑에 프로메테우스를 선택해주고 import를 누른다.
+CPU
+Memory
+Disk
+Network
+File System
+System Daemon
+Node Exporter
+정도 확인 가능
