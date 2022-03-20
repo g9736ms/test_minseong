@@ -1,0 +1,19 @@
+apiVersion: kubekey.kubesphere.io/v1alpha1
+kind: Cluster
+metadata:
+  name: kubeinstall 
+spec:
+  hosts:  
+  - {name: m-k8s, address: 192.168.1.10, internalAddress: 192.168.1.10, user: root, password: vagrant}
+  - {name: w1-k8s, address: 192.168.1.101, internalAddress: 192.168.1.101, user: root, password: vagrant}
+  - {name: w2-k8s, address: 192.168.1.102, internalAddress: 192.168.1.102, user: root, password: vagrant}
+  - {name: w3-k8s, address: 192.168.1.103, internalAddress: 192.168.1.103, user: root, password: vagrant}
+  roleGroups: 
+    etcd:     #etcd 가 설치될 마스터를 생성해 줍니다.
+    - m-k8s
+    master:   #마스터 노드를 설정해 줍니다.
+    - m-k8s
+    worker:   #워커노드를 설쟁해줍니다. 
+    - w1-k8s
+    - w2-k8s
+    - w3-k8s
