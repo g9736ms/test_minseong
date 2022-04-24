@@ -14,5 +14,5 @@ jobs:
       with:
         url: "http://192.168.1.10:31363/"
         user: "g9736ms"
-        token: ${{ secrets.TOKEN }}
+        token: "11880d9d5e01b1b8d5553e4f72f9b096fa"
         job: "anthony test"
