@@ -15,7 +15,7 @@ jobs:
     - name: test deploy
       uses: appleboy/jenkins-action@master
       with:
-        url: "http://192.168.1.10:31363/"
+        url: "{{test}}"
         user: "g9736ms"
-        token: "11880d9d5e01b1b8d5553e4f72f9b096fa"
+        token: "{{test}}"
         job: "anthony test"
