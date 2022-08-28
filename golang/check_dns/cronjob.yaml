@@ -1,0 +1,30 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: checkurl
+  namespace: cron
+spec:
+  schedule: "0 */4 * * *"
+  successfulJobsHistoryLimit: 2
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: checkurl
+            image: 이미지이름:v1
+            imagePullPolicy: IfNotPresent
+            volumeMounts: #.env mount
+            - name: nslooup
+              mountPath: /data/nslookup.go
+            command:
+            - /bin/sh
+            - -c
+            - go get github.com/slack-go/slack ; go run /data/nslookup.go/nslookup.go
+          restartPolicy: OnFailure
+          nodeSelector: #node group 선택
+            node_role: test
+          volumes: #mount 대상 secret 지정
+          - name: nslooup
+            secret:
+              secretName: nslookup.go 
