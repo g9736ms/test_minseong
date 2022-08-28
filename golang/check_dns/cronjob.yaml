@@ -14,7 +14,7 @@ spec:
           - name: checkurl
             image: 이미지이름:v1
             imagePullPolicy: IfNotPresent
-            volumeMounts: #.env mount
+            volumeMounts: 
             - name: nslooup
               mountPath: /data/nslookup.go
             command:
