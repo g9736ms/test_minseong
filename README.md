@@ -1,5 +1,5 @@
-이것저것 써두는곳
-
+###이것저것 써두는곳
+---
 - bash : bash shell 스크립트 작성한 것들 나열 해둠
 
 - opensource_confg : 오픈소스들에 대해서 config 백업 및 사용 한 것들 기록용
