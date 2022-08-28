@@ -8,7 +8,7 @@ resource "aws_autoscaling_group" "bar" {
   desired_capacity          = 2
   force_delete              = true
   #LB랑 연결 하는 곳
-  target_group_arns         = [ "arn:aws:elasticloadbalancing:us-east-2:958958298938:targetgroup/ts-test-lb-g/1f25eaa5401c8b3d"]
+  target_group_arns         = [ "arn:aws:elasticloadbalancing:us-east-2::targetgroup/ts-test-lb-g/"]
   #런처 설정
   launch_configuration      = "web_config0"
   #서브넷 쓸 공간 설정
@@ -44,12 +44,12 @@ resource "aws_autoscaling_group" "bar1" {
   desired_capacity          = 2
   force_delete              = true
   #LB랑 연결 하는 곳
-  target_group_arns         = [ "arn:aws:elasticloadbalancing:us-east-2:958958298938:targetgroup/ts-test-lb-g/1f25eaa5401c8b3d"]
+  target_group_arns         = [ "arn:aws:elasticloadbalancing:us-east-2::targetgroup/ts-test-lb-g/"]
   #런처 설정
   #launch_configuration      = aws_launch_configuration.as_conf1.name
   launch_configuration      = "web_config1"
   #서브넷 쓸 공간 설정
-  vpc_zone_identifier       = ["subnet-3e88c757", "subnet-f4d3598f"]
+  vpc_zone_identifier       = ["subnet-", "subnet-"]
   #런처 생명주기
   lifecycle {
     create_before_destroy = true
