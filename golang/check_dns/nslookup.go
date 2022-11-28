@@ -22,14 +22,14 @@ func main() {
             // Fields are Optional extra data!
             Fields: []slack.AttachmentField{
                 {
-                    Title: "thegiftingcompany.io",
+                    Title: "",
                     Value: time.Now().String(),
                 },
             },
         }
 
         channelID, timestamp, err := api.PostMessage(
-            "C0142M9QAQ5",
+            
             slack.MsgOptionText("도메인 등록 알림입니다.", false),
             slack.MsgOptionAttachments(attachment),
             slack.MsgOptionAsUser(true), // Add this if you want that the bot would post message as a user, otherwise it will send response using the default slackbot
